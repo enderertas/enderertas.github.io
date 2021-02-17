@@ -53,6 +53,7 @@ class PlaceProvinceSearch extends PlaceProvince
 Bu işlemler tamamlandıktan sonra böyle bir görüntü elde edilir.
 
 # Filtreleme (Filter)
+>Filtreleme
 
 
 Eğer filtreleme oluşturulmak isteniyorsa,
