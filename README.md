@@ -7,4 +7,4 @@
 
     vagrant up && vagrant ssh
 
-deneme
+www.usecomer.com
