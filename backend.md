@@ -7,7 +7,7 @@
 
     vagrant up && vagrant ssh
 
-# Filter
+# setNoPadding (panel düzeltmeleri)
 
 Filtreleme oluşturmadan önce 
 
@@ -50,5 +50,38 @@ class PlaceProvinceSearch extends PlaceProvince
 
 ![](https://github.com/enderertas/enderertas.github.io/blob/main/assets/filter1.png?raw=true)
   
-Bu işlemler tamamlandıktan sonra böyle bir görüntü elde edilir.  
+Bu işlemler tamamlandıktan sonra böyle bir görüntü elde edilir.
+
+# Filtreleme (Filter)
+
+
+Eğer filtreleme oluşturulmak isteniyorsa,
+Daha önce use Search; oluşturduğumuz alanın altına bunları ekliyoruz ve use Search; kısmını siliyoruz daha sonra `    public $optionFields = [];
+` içinde düzenlemeler yapacağız.
+  ```php
+    public $filters = [];
+    public $filterNumberCondition = [];
+    public $optionFields = [];
+```
+```php
+            [['filterNumberCondition', 'filters'], 'safe'],
+```
+Yukarıdaki kodu da `public function rules()`'un içine ekliyoruz.  
+
+Sırada neleri aratacağımız var.  
+ID aratma örneği
+```php
+    public $optionFields = [
+    'id' => Flexible::OPTION_FIELD__NUMBER,
+];
+```   
+aynı dosya içindeki
+`        $this->load($params);
+`  kodundan sonra 
+ ```php
+        BackendFilterCache::create($this, $query);
+```
+kodunu ekleyiniz.
+
+Son olarak controller yapısına gidip $dataProvider'e post methodu ekleyiniz.
 
