@@ -81,7 +81,13 @@ aynı dosya içindeki
  ```php
         BackendFilterCache::create($this, $query);
 ```
-kodunu ekleyiniz.
+kodunu ekleyiniz ve eğer integer bir değer filtreliyorsanız searchModeldeki `            'id' => $this->id,
+` kısmını silin.
+```php
+  $query->andFilterWhere([
+            'id' => $this->id,
+        ]);
+```
 
 Son olarak controller yapısına gidip $dataProvider'e post methodu ekleyiniz.
-
+**Tebrikler.**
