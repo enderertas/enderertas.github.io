@@ -48,8 +48,8 @@ class PlaceProvinceSearch extends PlaceProvince
 ```
 *use Search; ın ekleneceği alan*
 
-![](https://github.com/enderertas/enderertas.github.io/blob/main/assets/filter1.png?raw=true)
-  
+![](https://github.com/enderertas/enderertas.github.io/blob/main/assets/filter1.png?raw=true)  
+
 Bu işlemler tamamlandıktan sonra böyle bir görüntü elde edilir.
 
 # Filtreleme (Filter)
