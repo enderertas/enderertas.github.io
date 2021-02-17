@@ -10,10 +10,27 @@
 # GridWrap 
 > GridWrap
 
-Panel üstünde ayrımları kolay yapabilmeyi amaçlar
+Panel üstünde sayfalardaki ayrımları kolay yapabilmeyi amaçlar. View içinde kullanılır. İç içe kullanıma uygundur.
+GridWrap sayesinde aşağıdaki gibi bir görüntü elde edebilirsiniz. GridWrap default olarak her sayfada çalışır.
 
+![](assets/gridwrap.png)
+ 
+#### import
+ ```php
+    use backend\components\widgets\GridWrap;
+ ```
 
-
+#### Örnek Kullanımlar   
+ ```php
+GridWrap::begin([
+    'title' => \Yii::t('er', 'Bu İşlem ile Teslimi Yapılması Gereken Ürünler'),
+    'size' => GridWrap::SIZE_XS12_SM12_MD6_LG6,
+    'color' => 'red',
+    'noPadding' => true
+]);
+echo Html::tag('div', 'content');
+GridWrap::end();
+ ```   
 
 # setNoPadding (panel düzeltmeleri)
 
