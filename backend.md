@@ -8,7 +8,6 @@
     vagrant up && vagrant ssh
 
 # GridWrap 
-> GridWrap
 
 Panel üstünde sayfalardaki ayrımları kolay yapabilmeyi amaçlar. View içinde kullanılır. İç içe kullanıma uygundur.
 GridWrap sayesinde aşağıdaki gibi bir görüntü elde edebilirsiniz. GridWrap default olarak her sayfada çalışır.
