@@ -1,6 +1,7 @@
 
 * [Başla](/)
-*   [Backend](backend)
+*   [Back-End](backend)
+*   [Front-End](frontend)
 
 
 
