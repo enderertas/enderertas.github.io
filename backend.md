@@ -14,12 +14,12 @@ GridWrap sayesinde aşağıdaki gibi bir görüntü elde edebilirsiniz. GridWrap
 
 ![](assets/gridwrap.png)
  
-#### import
+> İmport
  ```php
     use backend\components\widgets\GridWrap;
  ```
 
-#### Örnek Kullanımlar   
+> Örnek Kullanımlar   
  ```php
 GridWrap::begin([
     'title' => \Yii::t('er', 'Bu İşlem ile Teslimi Yapılması Gereken Ürünler'),
@@ -31,7 +31,7 @@ echo Html::tag('div', 'content');
 GridWrap::end();
  ```   
 
-# setNoPadding (panel düzeltmeleri)
+## setNoPadding (panel düzeltmeleri)
 
 Filtreleme oluşturmadan önce 
 
