@@ -77,7 +77,6 @@ class PlaceProvinceSearch extends PlaceProvince
 Bu işlemler tamamlandıktan sonra böyle bir görüntü elde edilir.
 
 # Filtreleme (Filter)
->Filtreleme
 
 
 Eğer filtreleme oluşturulmak isteniyorsa,
@@ -115,4 +114,11 @@ kodunu ekleyiniz ve eğer integer bir değer filtreliyorsanız searchModeldeki `
 ```
 
 Son olarak controller yapısına gidip $dataProvider'e post methodu ekleyiniz.
-**Tebrikler.**
+**Tebrikler.**  
+
+# Yerelleştirme (Localization)  
+
+String ifadelerin geleceği yerlere aşağıdaki kod satırıyla yerelleştirmeyi gerçekleştirebilirsiniz. 
+```php
+Yii::t('er', 'Giden Epostalar');
+```
