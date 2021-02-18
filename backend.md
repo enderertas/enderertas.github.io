@@ -7,6 +7,54 @@
 
     vagrant up && vagrant ssh
 
+# GridView 
+
+GridView;  Sıralama, sayfalama ve ayrıca verileri filtreleme gibi özellikler sağlar. Temel kullanım şuna benzer:
+
+> İmport
+ ```php
+    use backend\components\widgets\GridView;
+ ```  
+
+ ```php
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            'id',
+            'title',
+            'updated_at',
+            'created_at',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+ ```  
+Temel görünümü şuna benzer:
+![](assets/gridview.png)
+
+## Responsive GridView
+
+GridView'de ki Columnlara genişletilebilme(Collibsble) özelliği verebilmek için kullanım şu şekildedir:
+
+ ```php
+            [
+                'attribute' => 'id', //attribute adı yazılır
+                'headerOptions' => ['data-class' => 'expand'], //expand classı verilir
+            ],
+ ```  
+Hangi Columnların gizleneceğini ayarlama ise şu şekildedir:
+ ```php
+            [
+                'attribute' => 'is_active', //attribute adı yazılır
+                'headerOptions' => ['data-hide' => 'phone,tablet'], // cihazlar belirtilir
+            ],
+ ```  
+Sonuc şu şekildedir:
+
+![](assets/responsive_gridview.png)
+
 # GridWrap 
 
 Panel üstünde sayfalardaki ayrımları kolay yapabilmeyi amaçlar. View içinde kullanılır. İç içe kullanıma uygundur.
