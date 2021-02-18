@@ -79,6 +79,34 @@ echo Html::tag('div', 'content');
 GridWrap::end();
  ```   
 
+## setToolbar (panel düzeltmeleri)    
+
+Default gelen action toollara daha iyi bir görüntü vermek adına eski actionTool silinir yerine aşağıdaki kullanım eklenir
+>Update Sayfası Örneği
+ ```php
+GridWrap::setToolbar([
+    Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-xs']),
+    Html::a('Delete', ['delete', 'id' => $model->id], [
+        'class' => 'btn btn-danger btn-xs',
+        'data' => [
+            'confirm' => Yii::t("er", 'Are you sure you want to delete this item?'),
+            'method' => 'post',
+        ],
+    ])
+]);
+ ```
+Ortaya çıkan görüntü bu şekildedir.
+![](assets/actiontool.png)
+
+>View Sayfası Örneği
+ ```
+GridWrap::setToolbar([
+    Html::a(Yii::t('er', 'Create Affiliate'), ['create'], ['class' => 'btn btn-success'])
+]);
+ ```
+
+
+
 ## setNoPadding (panel düzeltmeleri)
 
 Filtreleme oluşturmadan önce 
