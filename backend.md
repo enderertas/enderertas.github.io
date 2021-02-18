@@ -48,7 +48,7 @@ Hangi Columnların gizleneceğini ayarlama ise şu şekildedir:
  ```php
             [
                 'attribute' => 'is_active', //attribute adı yazılır
-                'headerOptions' => ['data-hide' => 'phone,tablet'], // cihazlar belirtilir
+                'headerOptions' => ['data-hide' => 'phone,tablet'], // Gizlemek istediğiniz cihazları belirtiniz
             ],
  ```  
 Sonuc şu şekildedir:

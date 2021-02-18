@@ -3,7 +3,7 @@
 > USECOMER
 
 
-[Başlangıç](/getStarted)
+[Başlangıç](backend.md)
 
     vagrant up && vagrant ssh
 

@@ -1,14 +1,14 @@
 <!-- _coverpage.md -->
 
-# Comer
-
-[Get Started](backend)
-
-
 <!-- background image -->
 
-![](assets/logo.png)
+![logo](assets/logo.png)
 
 <!-- background color -->
+> E-Ticaret E-İhracat Yazılım Alt Yapısı
 
-![color](red)
+
+
+
+[Başla](backend.md)
+[UseComer](https://www.usecomer.com)
