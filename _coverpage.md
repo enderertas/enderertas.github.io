@@ -2,7 +2,8 @@
 
 # Comer
 
-[Get Started](#backend?id=gridwrap)
+[Get Started](/backend?id=gridwrap)
+
 
 <!-- background image -->
 

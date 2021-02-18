@@ -1,7 +1,8 @@
 
 * [Başla](/)
-*   [Back-End](backend)
-*   [Front-End](frontend)
+*   [Back-End](backend.md)
+*   [Front-End](frontend.md)
+*   [Gii](gii.md)
 
 
 
