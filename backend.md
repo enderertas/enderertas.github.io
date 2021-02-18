@@ -36,7 +36,7 @@ Temel görünümü şuna benzer:
 
 ## Responsive GridView
 
-GridView'de ki Columnlara genişletilebilme(Collibsble) özelliği verebilmek için kullanım şu şekildedir:
+GridView'de ki Columnlara genişletilebilme(Collapsible) özelliği verebilmek için kullanım şu şekildedir:
 
  ```php
             [
