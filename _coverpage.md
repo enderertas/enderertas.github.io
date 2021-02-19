@@ -10,5 +10,5 @@
 
 
 
-[Başla](backend.md)
+[Başla](localization.md)
 [UseComer](https://www.usecomer.com)

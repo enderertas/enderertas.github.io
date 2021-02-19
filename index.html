@@ -13,7 +13,14 @@
 
         coverpage: true,
         logo: '/assets/logo.png',
-        search: 'auto', // default
+        search: {
+            maxAge: 86400000, // Expiration time, the default one day
+            paths: 'auto',
+            placeholder: 'Ara',
+            noData: 'Bulunamadı',
+            depth: 6,
+            hideOtherSidebarContent: true, // whether or not to hide other sidebar content
+        },
         loadSidebar: true,
         subMaxLevel: 9,
         auto2top: true,
