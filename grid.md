@@ -190,7 +190,7 @@ kodunu ekleyiniz ve eğer integer bir değer filtreliyorsanız searchModeldeki `
 ```
 
 Son olarak controller yapısına gidip $dataProvider'e post methodu ekleyiniz.
-**Tebrikler.**  
+
 
 >Not: Filtre hazırlarken olmaması gereken bir hata ile karşılaşıyorsanız 
 ```sql
@@ -198,4 +198,58 @@ TRUNCATE `evimdehobi-db`.`backend_filter_cache`
 ```  
 SQL sorgusunu çalıştırın.
 
+
+## Filtreleme De Option Fields'lerin Kullanımı
+
+Option Fields'lerin örnek kullanımı şu şekildedir:
+```php
+ public $optionFields = [
+id'=>Flexible::
+        'id' => Flexible::OPTION_FIELD__NUMBER,
+        'message' => Flexible::OPTION_FIELD__TEXT_INPUT,
+        'type' => Flexible::OPTION_FIELD__SELECT2,
+    ];
+```
+Option Fieldsler için belirlenmiş tüm const değerlerini Flexible class'ı ile çağırabilirsiniz ve hazır const değerleri şunlardır:
+
+```php
+    const OPTION_FIELD__TEXT_INPUT = 'text';
+    const OPTION_FIELD__CHECKBOX = 'checkbox';
+    const OPTION_FIELD__DROP_DOWN_LIST = 'dropDownList';
+    const OPTION_FIELD__ICON_PICKER = 'iconPicker';
+    const OPTION_FIELD__VECTOR_ICON_PICKER = 'vectorIconPicker';
+    const OPTION_FIELD__HTML_EDITOR = 'htmlEditor';
+    const OPTION_FIELD__URL = 'url';
+    const OPTION_FIELD__BLOGS = 'blogs';
+    const OPTION_FIELD__USERS = 'users';
+    const OPTION_FIELD__MULTI_SELECT2 = 'multiSelect2';
+    const OPTION_FIELD__BLOCK_CONTENT = 'blockcontent';
+    const OPTION_FIELD__COLOR = 'color';
+    const OPTION_FIELD__ICON = 'icon';
+    const OPTION_FIELD__IMAGE = 'image';
+    const OPTION_FIELD__NUMBER = 'number';
+    const OPTION_FIELD__PASSWORD_INPUT = 'passwordInput';
+    const OPTION_FIELD__PLACE = 'place';
+    const OPTION_FIELD__PRODUCTS = 'products';
+    const OPTION_FIELD__PRODUCT_TAGS = 'productTags';
+    const OPTION_FIELD__SELECT2 = 'select2';
+    const OPTION_FIELD__TEXT_AREA = 'textarea';
+    const OPTION_FIELD__TITLE = 'title';
+    const OPTION_FIELD__DATE_TIME = 'datetime';
+    const OPTION_FIELD__BRAND = 'brand';
+```
+
+>Not: Bazı input türleri ek kodlamalar talep edebilir.
+
+Eğer OPTION_FIELD__DROP_DOWN_LIST kullanılacaksa Child Model'in içene bu property adıyla
+bir list fonksiyonu tanımlanmalı yani şu şekilde. 
+```php
+          public function list_propertyName()
+          {
+               return [
+                   'value' => 'text'
+               ];
+          }
+```
+Bunu yapmazsanız zaten debug olarak sizi uyaracaktır. Yapmanızı zorunlu kılacaktır.
 
