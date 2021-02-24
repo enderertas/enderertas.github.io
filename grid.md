@@ -253,3 +253,23 @@ bir list fonksiyonu tanımlanmalı yani şu şekilde.
 ```
 Bunu yapmazsanız zaten debug olarak sizi uyaracaktır. Yapmanızı zorunlu kılacaktır.
 
+## GridView'de Buton Kullanımı
+
+>Basit Kullanımı Şu Şekildedir:
+
+```php
+            [
+        "attribute" => 'status',
+//        'headerOptions' => ['data-hide' => 'phone,tablet'],
+        "value" => function ($model) {
+            if ($model->status == StockAlarm::STATUS_SUCCESS  ) {
+                $return[] = Html::tag('p', Yii::t('er', 'Bilgilendirildi'), ['class' => 'btn-xs btn btn-success']);
+            }
+            else{
+                $return[] = Html::tag('p', Yii::t('er', 'Bekleniyor'), ['class' => 'btn-xs btn btn-danger']);
+            }
+            return implode(" ", $return);
+        },
+        "format" => "raw"
+    ],
+```
