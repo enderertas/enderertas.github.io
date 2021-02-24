@@ -45,3 +45,11 @@ bir list fonksiyonu tanımlanmalı yani şu şekilde.
 ```
 Bunu yapmazsanız zaten debug olarak sizi uyaracaktır. Yapmanızı zorunlu kılacaktır.
 
+>Filexible Alanlar
+>
+>
+
+Comer'da bulunan banner alanı sayesinde migration yapmadan database oluşturabilir ve kullanabilirsiniz.
+* Model oluşturacağınız alanın hangi controllerden besleneceğine dikkat ediniz,
+* Benzer yapıları aynı başlıkta toplamaya özen gösteriniz,
+* Extends ettiğiniz alana dikkat ediniz.

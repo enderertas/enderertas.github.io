@@ -258,18 +258,12 @@ Bunu yapmazsanız zaten debug olarak sizi uyaracaktır. Yapmanızı zorunlu kıl
 >Basit Kullanımı Şu Şekildedir:
 
 ```php
-            [
-        "attribute" => 'status',
-//        'headerOptions' => ['data-hide' => 'phone,tablet'],
-        "value" => function ($model) {
-            if ($model->status == StockAlarm::STATUS_SUCCESS  ) {
-                $return[] = Html::tag('p', Yii::t('er', 'Bilgilendirildi'), ['class' => 'btn-xs btn btn-success']);
-            }
-            else{
-                $return[] = Html::tag('p', Yii::t('er', 'Bekleniyor'), ['class' => 'btn-xs btn btn-danger']);
-            }
-            return implode(" ", $return);
-        },
-        "format" => "raw"
-    ],
+                      [
+                          'attribute' => 'status',
+                          'format' => 'raw',
+                          'value' => function ($model) {
+                              return $model->status == StockAlarm::STATUS_SUCCESS ? Html::tag('p', Yii::t('er', 'Bildirildi'), ['class' => 'btn-xs btn btn-success'])
+                                  : Html::tag('p', Yii::t('er', 'Bekliyor'), ['class' => 'btn-xs btn btn-danger']);
+                          }
+                      ],
 ```
