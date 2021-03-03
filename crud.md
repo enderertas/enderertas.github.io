@@ -5,7 +5,7 @@
 ![](assets/Crud.png)
 
 Eğer oluşturmuş olduğunuz yapıya otomatik parametre tanımlamak isterseniz şunu uygulayabilirsiniz
->Örenğin Create Standart Yapısı Şu Şekildedir
+>Örneğin Create Standart Yapısı Şu Şekildedir
 
 ```php
 ...
