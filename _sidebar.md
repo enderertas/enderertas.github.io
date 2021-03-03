@@ -9,6 +9,7 @@
 **   [Flexible](flexible.md)
 **   [Widget](widget.md)
 *   [Gii](gii.md)
+**   [CRUD](crud.md)
 *   [Test](test.md)
 
 
