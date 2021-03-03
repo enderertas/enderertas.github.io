@@ -7,6 +7,7 @@
 *   [Front-End](frontend.md)
 *   [Common](common.md)
 **   [Flexible](flexible.md)
+**   [Widget](widget.md)
 *   [Gii](gii.md)
 *   [Test](test.md)
 
