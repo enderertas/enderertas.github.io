@@ -36,7 +36,7 @@ Flexible class'ı ile veri tabanında ekstra tablolar oluşturmadan esnek bir ş
 Eğer OPTION_FIELD__DROP_DOWN_LIST kullanılacaksa Child Model'in içene bu property adıyla
 bir list fonksiyonu tanımlanmalı yani şu şekilde. 
 ```php
-          public function list_propertyName()
+          public static function list_propertyName()
           {
                return [
                    'value' => 'text'

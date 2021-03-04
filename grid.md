@@ -244,7 +244,7 @@ Option Fieldsler için belirlenmiş tüm const değerlerini Flexible class'ı il
 Eğer OPTION_FIELD__DROP_DOWN_LIST kullanılacaksa Child Model'in içene bu property adıyla
 bir list fonksiyonu tanımlanmalı yani şu şekilde. 
 ```php
-          public function list_propertyName()
+          public static function list_propertyName()
           {
                return [
                    'value' => 'text'
