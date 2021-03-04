@@ -12,7 +12,6 @@
 *   [Gii](gii.md)
 **   [CRUD](crud.md)
 *   [Test](test.md)
-*   [Test](test.md)
 
 
 
