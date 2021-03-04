@@ -22,7 +22,7 @@ Iconun name alanı fontawesome isimleriyle aynıdır.
 
 Icona eklenecek olan attribute'ler `'options'=>[]` altında gösterilir.
 ```php
-IconSolid::widget(['name' => 'redo-alt', 'options' => ['class' => 'fas fa-redo-alt']])
+IconSolid::widget(['name' => 'redo-alt', 'options' => ['class' => 'yazilmak istenen class']])
 ```
 
 
