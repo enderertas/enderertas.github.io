@@ -13,6 +13,8 @@
 **   [CRUD](crud.md)
 *   [Test](test.md)
 *   [Ekstralar](extra.md)
+**   [GitHub](github.md)
+**   [Migrate](migrate.md)
 
 
 

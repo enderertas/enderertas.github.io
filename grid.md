@@ -79,6 +79,90 @@ echo Html::tag('div', 'content');
 GridWrap::end();
  ```   
 
+## Aynı Sayfada İki ( Çoklu ) GridWrap Kullanımının Detayları
+
+```php
+<?php
+..
+GridWrap::begin([    //GridWrap'ı Başlatalım
+    'title' => $this->title, //GridWrap'ın Detaylarını Ekleyebiliriz Bu Array İçine (ActionTool, Başlık gibi)
+])
+
+?>
+<div class="share-cart-update">  // Grid İçeriği
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
+
+</div>
+<?php
+GridWrap::end(); //GridWrapı Sonlandır
+
+GridWrap::begin([ // Diğer GridWrap
+    'title' => \Yii::t('er', 'Update Share Cart Item'),  //GridWrap'ın Detaylarını Ekleyebiliriz Bu Array İçine (ActionTool, Başlık gibi)
+    'toolbar' => Html::a(Yii::t('er', 'Create Share Cart Item'), ['share-cart-item/create', 'share_cart_id' => $model->id], ['class' => 'btn btn-success']),
+    'noPadding' => true
+])
+?>
+<div class="share-cart-item-index">
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?= GridView::widget([ // Grid İçeriği
+         'searchModel' => $searchModel,
+         'dataProvider' => $dataProvider, //Uyarıları iptal etmek için çalışılan dosyanın controller'ına tanıtmak gerekir
+        'columns' => [
+
+            'product_id:product',
+            'amount',
+
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}',
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    return Yii::$app->getUrlManager()->createUrl(['/promotion/share-cart-item/' . $action, 'id' => $model->id]);
+                }
+            ],
+        ],
+    ]); ?>
+
+</div>
+<?php
+GridWrap::end();
+?>
+```
+
+**Hata Veren filterModel dataProvider düzeltmeleri için izlemeniz gereken yol** 
+
+* Hata veren gridin controller actionIndex'ine gidilir ve oradan aşağıdakiler kopyalanır:
+
+```php
+$searchModel = new ShareCartItemSearch();
+$dataProvider = $searchModel->search(Yii::$app->request->post());
+```
+
+* Update alanında çalışılacağı için bu kopyalananlar çalışılacak alanın controller'ında update kısmına gerekli yere yapıştırılır.
+* Ardından render kısmına belirtilen şekilde düzenlenir
+```php
+        return $this->render('update', [
+            'model' => $model,
+            'modelShareCartItem' => $modelShareCartItem
+        ]);
+```
+* İlk yapıştırdığımız kodlar üzerinde şu şekilde değişiklik yapıyoruz
+```php
+        $modelShareCartItem['searchModel'] = new ShareCartItemSearch();
+        $modelShareCartItem['dataProvider'] = $modelShareCartItem['searchModel']
+```
+* Bu şekilde model parametrelerimizi gönderdik
+* Şimdi sayfayı yenilediğimizde dataProvider hatası alacaksınız bunu düzeltmek için çalışılan view kısmına yeni eklediğimiz dataProvider ve searchModeli tanıtmamız gerekecek
+```php
+         'dataProvider' => $modelShareCartItem['dataProvider'],
+        'filterModel' => $modelShareCartItem['searchModel'],
+``` 
+
+
+
 ## setToolbar (panel düzeltmeleri)    
 
 Default gelen action toollara daha iyi bir görüntü vermek adına eski actionTool silinir yerine aşağıdaki kullanım eklenir
