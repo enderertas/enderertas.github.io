@@ -21,6 +21,10 @@ GeneralOptions Hakkında Daha Detaylı Bilgi İçin Bu Demo Örneği İnceleyebi
 ## GeneralOptions'a Yeni Field Ekleme
 
 ```php
+    public static function getFieldGroups()
+    {
+    ...
+    
             'product' => [
                 'label' => Yii::t('er', 'Ürün Ayarları'),
                 'fields' => [
@@ -30,6 +34,7 @@ GeneralOptions Hakkında Daha Detaylı Bilgi İçin Bu Demo Örneği İnceleyebi
                     ],
                 ]
             ]
+....
 ```
 
 ## GeneralOptions'tan View'e Veri Çekme İşlemi
@@ -39,4 +44,5 @@ GeneralOptions Hakkında Daha Detaylı Bilgi İçin Bu Demo Örneği İnceleyebi
 ```php
 $showAmount = GeneralOptions::getValue("params.productConfig.showItemAmount");
 ```
+
 Eğer CheckBox İşaretliyse 1 Dönecektir.
