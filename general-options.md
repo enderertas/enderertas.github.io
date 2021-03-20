@@ -12,7 +12,7 @@ Sitenin temel ayarlarını kurgulamak için kullanılır. Örneğin:
 * Meta Etiketleri
 * İş Ortağı Ayarları
 
-Bu alanlara benzer yeni özellik geliştirilicekse GeneralOptions'ta çalışmalısınız.
+**Bu alanlara benzer yeni özellik geliştirilicekse GeneralOptions'ta çalışmalısınız.**
 
 > Demo Örnek
 
