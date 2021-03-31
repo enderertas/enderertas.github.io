@@ -1,10 +1,10 @@
-#Pazarlama Araçları
+# Pazarlama Araçları
 
 * GoogleAnalytics
 * FacebookPixel
 * YandexVerification
 
-Gibi araçları tek tuşla entegre edebilmek için bu bölümü kullanıyoruz. Bu bölümde nasıl geliştirme örneği aşağıdadır,
+Gibi araçları tek tuşla entegre edebilmek için bu bölümü kullanıyoruz. Geliştirme örneği aşağıdadır,
 
 >Google Analytics entegresyonunu Comer'da geliştirme örneği
 
