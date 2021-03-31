@@ -9,6 +9,7 @@
 *   [Common](common.md)
 **   [GeneralOptions](general-options.md)
 **   [Flexible](flexible.md)
+**   [Pazarlama Araçları](seo-tools.md)
 **   [Widget](widget.md)
 *   [Gii](gii.md)
 **   [CRUD](crud.md)
