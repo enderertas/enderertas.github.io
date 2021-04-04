@@ -61,8 +61,9 @@ class GoogleAnalytics extends MarketingIntegration
 
 }
 ```
->GoogleAnalytics kodunu bizden tüm sayfaların head kısmına eklememizi istiyor onun için 'all-pages' dedik daha kompleks bir örnek aşağıdadır
+>GoogleAnalytics kodunu bizden tüm sayfaların footer kısmına eklememizi istiyor onun için 'all-pages' dedik daha kompleks bir örnek aşağıdadır
 
+## Daha Kompleks Durumlarda Seo Tools Kullanımı
 ```php
 ...
     public function run()
@@ -84,10 +85,38 @@ class GoogleAnalytics extends MarketingIntegration
     }
 ...
 ```
+>Yazılan Kodu Head Kısmında Göstermek İçin View Kısmında Yii'nin Pos_Head Statiğini Kullanıyoruz
+
+```php
+<?php
+
+/**
+ * @var $model \common\models\MarketingIntegrations\GoogleAds
+ */
+
+
+use common\models\MarketingIntegrations\GoogleTagManager;
+use yii\web\View;
+
+if ($model) {
+    $this->registerJsFile("https://www.googletagmanager.com/gtag/js?id=" . $model->gId, [
+        'position' => \yii\web\View::POS_HEAD,
+        'async' => true
+    ]);
+    $js = <<<JS
+ window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-{$model->gId}');
+JS;
+    $this->registerJs($js, \yii\web\View::POS_HEAD);
+}
+
+```
 
 Model işlemi bu kadar şimdi Google'dan aldığımız koda oluşturduğumuz modeldeki parametreleri göndermemiz gerekiyor.
 
-Google Analytics'in head kısmına tanımlamamızı istediği kod şu şekildedir:
+Google Analytics'in tanımlamamızı istediği kod şu şekildedir:
 
 ```html
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -126,3 +155,7 @@ Gerekli yerlere modelden alacağımız verileri eklemek için
 </script>
 
 ```
+
+
+
+
