@@ -64,3 +64,25 @@ Controller'da üstteki örneğe göre daha kompleks parametre işleme şu şekil
 ```
 
 >Bu işlemlerden sonra filtrelemede sıkıntı yaşıyorsanız kod hiyerarşisini kontrol ediniz.
+
+## Panel Üzerinden Controller ve Sayfa Oluşturma
+
+* Panel üzerinden "Kontrolör Haritası"na gidiniz.
+* Yeni controller oluşturunuz.
+* Panel üzerinden sayfalar-> sayfa oluştura gidiniz.
+* Sayfa tipinde oluşturduğunuz controller'i seçiniz
+
+>Sistem otomatik işlemezse 
+
+```
+vagrant ssh
+```
+Projeninizin dosya yoluna gidin
+
+```
+php yii seo-url/one controller-adı
+```
+
+```
+php yii queue/run
+```
