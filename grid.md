@@ -337,7 +337,7 @@ bir list fonksiyonu tanımlanmalı yani şu şekilde.
 ```
 Bunu yapmazsanız zaten debug olarak sizi uyaracaktır. Yapmanızı zorunlu kılacaktır.
 
-## GridView'de Buton Kullanımı
+## GridView'de Html kodlarının kullanımı
 
 >Basit Kullanımı Şu Şekildedir:
 
