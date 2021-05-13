@@ -7,11 +7,12 @@
 
     vagrant up && vagrant ssh
 
-# GridView 
+# GridView
 
-GridView;  Sıralama, sayfalama ve ayrıca verileri filtreleme gibi özellikler sağlar. Temel kullanım şuna benzer:
+GridView; Sıralama, sayfalama ve ayrıca verileri filtreleme gibi özellikler sağlar. Temel kullanım şuna benzer:
 
 > İmport
+
  ```php
     use backend\components\widgets\GridView;
  ```  
@@ -31,8 +32,30 @@ GridView;  Sıralama, sayfalama ve ayrıca verileri filtreleme gibi özellikler 
         ],
     ]); ?>
  ```  
+
 Temel görünümü şuna benzer:
 ![](assets/gridview.png)
+
+## GridView Sıralama Listesini Değiştirme
+
+> İlgili GridView'in Searchmodel'ine Gidilir ve Gerekli Kod Yazılır Örnek:
+
+```php
+ public function search($params)
+{ $query = ProductView::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+//ilgili kodu dataproviderin hemen altına yazabilirsiniz
+
+        $dataProvider->sort->defaultOrder = [
+            'id' => SORT_DESC
+        ];
+
+...
+```
 
 ## Responsive GridView
 
@@ -44,30 +67,35 @@ GridView'de ki Columnlara genişletilebilir (Collapsible) özelliği verebilmek 
                 'headerOptions' => ['data-class' => 'expand'], //expand classı verilir
             ],
  ```  
+
 Hangi Columnların gizleneceğini ayarlama ise şu şekildedir:
+
  ```php
             [
                 'attribute' => 'is_active', //attribute adı yazılır
                 'headerOptions' => ['data-hide' => 'phone,tablet'], // Gizlemek istediğiniz cihazları belirtiniz
             ],
  ```  
+
 Sonuc şu şekildedir:
 
 ![](assets/responsive_gridview.png)
 
-# GridWrap 
+# GridWrap
 
 Panel üstünde sayfalardaki ayrımları kolay yapabilmeyi amaçlar. View içinde kullanılır. İç içe kullanıma uygundur.
 GridWrap sayesinde aşağıdaki gibi bir görüntü elde edebilirsiniz. GridWrap default olarak her sayfada çalışır.
 
 ![](assets/gridwrap.png)
- 
+
 > İmport
+
  ```php
     use backend\components\widgets\GridWrap;
  ```
 
-> Örnek Kullanımlar   
+> Örnek Kullanımlar
+
  ```php
 GridWrap::begin([
     'title' => \Yii::t('er', 'Bu İşlem ile Teslimi Yapılması Gereken Ürünler'),
@@ -132,7 +160,7 @@ GridWrap::end();
 ?>
 ```
 
-**Hata Veren filterModel dataProvider düzeltmeleri için izlemeniz gereken yol** 
+**Hata Veren filterModel dataProvider düzeltmeleri için izlemeniz gereken yol**
 
 * Hata veren gridin controller actionIndex'ine gidilir ve oradan aşağıdakiler kopyalanır:
 
@@ -141,32 +169,39 @@ $searchModel = new ShareCartItemSearch();
 $dataProvider = $searchModel->search(Yii::$app->request->post());
 ```
 
-* Update alanında çalışılacağı için bu kopyalananlar çalışılacak alanın controller'ında update kısmına gerekli yere yapıştırılır.
+* Update alanında çalışılacağı için bu kopyalananlar çalışılacak alanın controller'ında update kısmına gerekli yere
+  yapıştırılır.
 * Ardından render kısmına belirtilen şekilde düzenlenir
+
 ```php
         return $this->render('update', [
             'model' => $model,
             'modelShareCartItem' => $modelShareCartItem
         ]);
 ```
+
 * İlk yapıştırdığımız kodlar üzerinde şu şekilde değişiklik yapıyoruz
+
 ```php
         $modelShareCartItem['searchModel'] = new ShareCartItemSearch();
         $modelShareCartItem['dataProvider'] = $modelShareCartItem['searchModel']
 ```
+
 * Bu şekilde model parametrelerimizi gönderdik
-* Şimdi sayfayı yenilediğimizde dataProvider hatası alacaksınız bunu düzeltmek için çalışılan view kısmına yeni eklediğimiz dataProvider ve searchModeli tanıtmamız gerekecek
+* Şimdi sayfayı yenilediğimizde dataProvider hatası alacaksınız bunu düzeltmek için çalışılan view kısmına yeni
+  eklediğimiz dataProvider ve searchModeli tanıtmamız gerekecek
+
 ```php
          'dataProvider' => $modelShareCartItem['dataProvider'],
         'filterModel' => $modelShareCartItem['searchModel'],
 ``` 
 
+## setToolbar (panel düzeltmeleri)
 
+Default gelen action toollara daha iyi bir görüntü vermek adına eski actionTool silinir yerine aşağıdaki kullanım
+eklenir
+> Update Sayfası Örneği
 
-## setToolbar (panel düzeltmeleri)    
-
-Default gelen action toollara daha iyi bir görüntü vermek adına eski actionTool silinir yerine aşağıdaki kullanım eklenir
->Update Sayfası Örneği
  ```php
 GridWrap::setToolbar([
     Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-xs']),
@@ -179,42 +214,46 @@ GridWrap::setToolbar([
     ])
 ]);
  ```
+
 Ortaya çıkan görüntü bu şekildedir.
 ![](assets/actiontool.png)
 
->View Sayfası Örneği
+> View Sayfası Örneği
+
  ```
 GridWrap::setToolbar([
     Html::a(Yii::t('er', 'Create Affiliate'), ['create'], ['class' => 'btn btn-success'])
 ]);
  ```
 
-
-
 ## setNoPadding (panel düzeltmeleri)
 
-Filtreleme oluşturmadan önce 
+Filtreleme oluşturmadan önce
 
 ```php
    use backend\components\widgets\GridWrap;
    use backend\components\widgets\GridView;
 ```
+
 ```php
 GridWrap::setNoPadding();
 ```
+
 ```php
 GridWrap::setToolbar([
     Html::a(Yii::t('er', 'Create Place Province'), ['create'], ['class' => 'btn btn-success'])
 ]);
 ```
 
+yapılarını eklememiz gerekmektedir. Sonrasında çalışılan dosyanın searchModeline gidilir ve kod yapısında belirtilmiş
+kısma
 
- yapılarını eklememiz gerekmektedir.  Sonrasında çalışılan dosyanın searchModeline gidilir ve kod yapısında belirtilmiş kısma  
  ```php
  use Search;
 ```
- eklenir.  
- 
+
+eklenir.
+
 ```php
 class PlaceProvinceSearch extends PlaceProvince
  {
@@ -230,43 +269,51 @@ class PlaceProvinceSearch extends PlaceProvince
          ];
      }
 ```
+
 *use Search; ın ekleneceği alan*
 
 ![](https://github.com/enderertas/enderertas.github.io/blob/main/assets/filter1.png?raw=true)
-  
+
 Bu işlemler tamamlandıktan sonra böyle bir görüntü elde edilir.
 
 # Filtreleme (Filter)
 
-
-Eğer filtreleme oluşturulmak isteniyorsa,
-Daha önce use Search; oluşturduğumuz alanın altına bunları ekliyoruz ve use Search; kısmını siliyoruz daha sonra `    public $optionFields = [];
+Eğer filtreleme oluşturulmak isteniyorsa, Daha önce use Search; oluşturduğumuz alanın altına bunları ekliyoruz ve use
+Search; kısmını siliyoruz daha sonra `    public $optionFields = [];
 ` içinde düzenlemeler yapacağız.
+
   ```php
     public $filters = [];
     public $filterNumberCondition = [];
     public $optionFields = [];
 ```
+
 ```php
             [['filterNumberCondition', 'filters'], 'safe'],
 ```
-Yukarıdaki kodu da `public function rules()`'un içine ekliyoruz.  
+
+Yukarıdaki kodu da `public function rules()`'un içine ekliyoruz.
 
 Sırada neleri aratacağımız var.  
 ID aratma örneği
+
 ```php
     public $optionFields = [
     'id' => Flexible::OPTION_FIELD__NUMBER,
 ];
 ```   
+
 aynı dosya içindeki
 `        $this->load($params);
-`  kodundan sonra 
+`  kodundan sonra
+
  ```php
         BackendFilterCache::create($this, $query);
 ```
+
 kodunu ekleyiniz ve eğer integer bir değer filtreliyorsanız searchModeldeki `            'id' => $this->id,
 ` kısmını silin.
+
 ```php
   $query->andFilterWhere([
             'id' => $this->id,
@@ -276,16 +323,18 @@ kodunu ekleyiniz ve eğer integer bir değer filtreliyorsanız searchModeldeki `
 Son olarak controller yapısına gidip $dataProvider'e post methodu ekleyiniz.
 
 
->Not: Filtre hazırlarken olmaması gereken bir hata ile karşılaşıyorsanız 
+> Not: Filtre hazırlarken olmaması gereken bir hata ile karşılaşıyorsanız
+
 ```sql
 TRUNCATE `evimdehobi-db`.`backend_filter_cache`
 ```  
-SQL sorgusunu çalıştırın.
 
+SQL sorgusunu çalıştırın.
 
 ## Filtreleme De Option Fields'lerin Kullanımı
 
 Option Fields'lerin örnek kullanımı şu şekildedir:
+
 ```php
  public $optionFields = [
 id'=>Flexible::
@@ -294,7 +343,9 @@ id'=>Flexible::
         'type' => Flexible::OPTION_FIELD__SELECT2,
     ];
 ```
-Option Fieldsler için belirlenmiş tüm const değerlerini Flexible class'ı ile çağırabilirsiniz ve hazır const değerleri şunlardır:
+
+Option Fieldsler için belirlenmiş tüm const değerlerini Flexible class'ı ile çağırabilirsiniz ve hazır const değerleri
+şunlardır:
 
 ```php
     const OPTION_FIELD__TEXT_INPUT = 'text';
@@ -323,10 +374,11 @@ Option Fieldsler için belirlenmiş tüm const değerlerini Flexible class'ı il
     const OPTION_FIELD__BRAND = 'brand';
 ```
 
->Not: Bazı input türleri ek kodlamalar talep edebilir.
+> Not: Bazı input türleri ek kodlamalar talep edebilir.
 
-Eğer OPTION_FIELD__DROP_DOWN_LIST kullanılacaksa Child Model'in içene bu property adıyla
-bir list fonksiyonu tanımlanmalı yani şu şekilde. 
+Eğer OPTION_FIELD__DROP_DOWN_LIST kullanılacaksa Child Model'in içene bu property adıyla bir list fonksiyonu
+tanımlanmalı yani şu şekilde.
+
 ```php
           public static function list_propertyName()
           {
@@ -335,11 +387,12 @@ bir list fonksiyonu tanımlanmalı yani şu şekilde.
                ];
           }
 ```
+
 Bunu yapmazsanız zaten debug olarak sizi uyaracaktır. Yapmanızı zorunlu kılacaktır.
 
 ## GridView'de Html kodlarının kullanımı
 
->Basit Kullanımı Şu Şekildedir:
+> Basit Kullanımı Şu Şekildedir:
 
 ```php
                       [
