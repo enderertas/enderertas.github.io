@@ -7,6 +7,7 @@
 **   [Controller](controller.md)
 *   [Front-End](frontend.md)
 *   [Common](common.md)
+**   [ComponenetOptions](componenetoptions.md)
 **   [GeneralOptions](general-options.md)
 **   [Flexible](flexible.md)
 **   [Pazarlama Araçları](seo-tools.md)
