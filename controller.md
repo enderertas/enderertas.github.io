@@ -2,6 +2,35 @@
 
 > Fonksiyonların kullanılacağı asıl alan burasıdır.
 
+>Yeni bir controller yaratıldığında aşağıdaki konuma bunu eklemeyi unutma
+
+```php
+use backend\modules\rbac\filters\AccessControl;
+
+```
+
+```php
+ 'access' => [
+                'class' => AccessControl::className(),
+            ],
+```
+
+```php
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+```
 
 ## Parametre
 Controller'da basit bir şekilde parametre işleme şu şekildedir:
