@@ -6,9 +6,16 @@
 > PhpstormProjects/****-frontend/app/frontend/components/ControllerMap.php
 
 ```
-SeoUrl::to('actionId', ['id' => 2]);
+SeoUrl::to('homepage', []);
+SeoUrl::to('homepage');
 
-// /tr/actionId?id=2
+// /tr/ana-sayfa
+```
+
+```
+SeoUrl::to('filterCategory', ['c' => '1']);
+
+// /tr/boya-kategorisi
 ```
 
 *
@@ -25,12 +32,11 @@ SeoUrl::to('actionId', ['id' => 2]);
 > Kullanım Örneğ Şu Şekildedir
 
 ```
-SeoUrl::toWithParams('actionId', ['id'=>2], ['q' => 'parametre']);
+SeoUrl::toWithParams('filterCategory', ['c'=>'2'], ['b' => '2']);
 
-// /tr/actionId?id=2?q=parametre
+// /tr/akrilik-boya?b=2
 
 ```
-
 
 ## SeoUrl::urlTo($value->url)
 
