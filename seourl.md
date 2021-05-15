@@ -5,6 +5,12 @@
 
 > PhpstormProjects/****-frontend/app/frontend/components/ControllerMap.php
 
+```
+SeoUrl::to('actionId', ['id' => 2]);
+
+// /tr/actionId?id=2
+```
+
 *
     2. alabildiği parametre ekstra parametrelerdir, Id gibi.
 *
@@ -18,9 +24,13 @@
 
 > Kullanım Örneğ Şu Şekildedir
 
-`SeoUrl::toWithParams('actionId', [], ['q' => 'parametre'])`
+```
+SeoUrl::toWithParams('actionId', ['id'=>2], ['q' => 'parametre']);
 
-> Sonuç /tr/actionId?q=parametre
+// /tr/actionId?id=2?q=parametre
+
+```
+
 
 ## SeoUrl::urlTo($value->url)
 
