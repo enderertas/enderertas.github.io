@@ -7,7 +7,8 @@
 **   [Controller](controller.md)
 *   [Front-End](frontend.md)
 *   [Common](common.md)
-**   [SeoUrl](seourl.md)
+**   [Common](common.md)
+**   [Buraya Ekleyebilirsin](shipment.md) // not
 **   [ComponenetOptions](componenetoptions.md)
 **   [GeneralOptions](general-options.md)
 **   [Flexible](flexible.md)
