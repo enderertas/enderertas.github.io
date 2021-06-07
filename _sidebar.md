@@ -8,7 +8,7 @@
 *   [Front-End](frontend.md)
 *   [Common](common.md)
 **   [Common](common.md)
-**   [Buraya Ekleyebilirsin](shipment.md) // not
+**   [Shipment](shipment.md)
 **   [ComponenetOptions](componenetoptions.md)
 **   [GeneralOptions](general-options.md)
 **   [Flexible](flexible.md)

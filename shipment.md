@@ -1,19 +1,27 @@
 # Shipment
 
-##burayı düzenleyebilirsin
+###Model Yapısı
+Shipment lojistik bilgisi içeren işlem veya API'lerde kullanılan modeldir. Bu model temel olarak tanımlanmış bazı değişkenler
+içerir. Bu değişkenler;
 
- > Shipment Entegrasyon
+```php
+const DELIVERY_TYPE_FREE = 'free';
+```
+```php
+const DELIVERY_TYPE_BUYER_PAYS = 'buyerPays';
+```
+```php
+const DELIVERY_TYPE_MERCHANT_PAYS = 'merchantPays';
+```
+
+
  
 #### Alt başlık
 ## Alt başlık
 
 
-```php
-echo "code";
-```
-
 * Maddeler
 
 [Yazı](backend.md)
 
-![logo](assets/logo.png)
+![logo](assets/logo.png)    
