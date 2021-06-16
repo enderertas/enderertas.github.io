@@ -1414,6 +1414,164 @@ public $autoWriteFields = [
 }
 ````
 
+Örnek API Dosyası;
+
+````php
+public function create_order(){
+        try {
+
+            // İstekte bulunacağımız veriyi dizin olarak hazırlıyoruz.
+            $request = [
+                'apikey' => $this->apikey,
+                'warehouse_code' => $this->warehouse_code,
+                'collection' => $this->collection,
+                'collection_warehouse_code' => $this->collection_warehouse_code,
+                'customer_code' => $this->customer_code,
+                'order_code' => $this->order_code,
+                'shipment_date' => date('Y-m-d'),
+                'notes' => $this->notes,
+                'receiver_name' => $this->receiver_name,
+                'receiver_telephone' => $this->receiver_telephone,
+                'receiver_email' => $this->receiver_email,
+                'receiver_address' => $this->receiver_address,
+                'receiver_city' => $this->receiver_city,
+                'receiver_district' => $this->receiver_district,
+                'receiver_county' => $this->receiver_county,
+                'package' => [
+                    'package_id' => $this->package_id,
+                    'package_barcode' => $this->package_barcode,
+                ]
+            ];
+
+            // İsteğimiz için Client oluşturuyoruz.
+            $client = new Client();
+
+            // Oluşturduğumuz Client ile isteğimizi gönderiyoruz ve sonucu bir değişkene atıyoruz.
+            $response = $client->createRequest()
+                ->setMethod('POST')
+                ->setUrl($this->api)
+                ->setData($request)
+                ->send();
+
+            // Sonuç içerisindeki verileri çözümlüyoruz.
+            $response = Json::decode($response->getContent());
+
+            // Bir sonucumuzun olup olmadığını kontrol ediyoruz.
+            if (isset($response)) {
+
+                 // Lojistik firması tarafından belirtilen sonuç kodlarına göre return işlemi gerçekleştiriyoruz.
+                switch($response["response_val"]){
+                    case 0:
+                        return [
+                            'request' => $request,
+                            'response' => $response,
+                            'status' => true,
+                            'errorMessage' => ''
+                        ];
+                        break;
+                    case 82:
+                        return [
+                            'request' => $request,
+                            'response' => $response,
+                            'status' => false,
+                            'errorMessage' => 'Apikey hatası'
+                        ];
+                        break;
+                    case 234:
+                        return [
+                            'request' => $request,
+                            'response' => $response,
+                            'status' => false,
+                            'errorMessage' => 'Parametre boş bırakılamaz.'
+                        ];
+                        break;
+                    case 235:
+                        return [
+                            'request' => $request,
+                            'response' => $response,
+                            'status' => false,
+                            'errorMessage' => 'Parametre hatalı.'
+                        ];
+                        break;
+                    case 251:
+                        return [
+                            'request' => $request,
+                            'response' => $response,
+                            'status' => false,
+                            'errorMessage' => 'Mükerrer sipariş.'
+                        ];
+                        break;
+                    case 264:
+                        return [
+                            'request' => $request,
+                            'response' => $response,
+                            'status' => false,
+                            'errorMessage' => 'Alıcı adresi çözümlenemedi.'
+                        ];
+                        break;
+                }
+            } else {
+                return [
+                    'request' => $request,
+                    'response' => $response,
+                    'status' => false,
+                    'errorMessage' => "İstek yapılan data NULL olarak döndü"
+                ];
+            }
+        }
+        
+        // Eğer istekte bir hata oluşmuşsa hatayı dönderiyoruz.
+        catch (InvalidConfigException $fault) {
+            return [
+                'request' => $request,
+                'response' => $fault,
+                'status' => false,
+                'errorMessage' => $fault
+            ];
+        }
+    }
+````
+
+>SOAP API İstek Örneği
+
+````php
+use yii\httpclient\Client;
+
+$request = [
+    'apikey' => $this->apikey,
+    'shipment_code' => $this->shipment_code
+];
+
+$client = new Client();
+
+$response = $client->createRequest()
+    ->setMethod('POST')
+    ->setUrl($this->api)
+    ->setData($request)
+    ->send();
+
+$response = Json::decode($response->getContent());
+````
+
+>REST API İstek Örneği
+
+````php
+$request = [
+    'input' => [
+        'barkod' => $this->barkodNo,
+        'kullanici' => $this->musteriId,
+        'sifre' => $this->sifre
+    ]
+];
+
+$soapclient = new \SoapClient($this->api);
+
+$response = $soapclient->gonderiSorgu($request);
+````
+
+**Dönderdiğimiz veri türü dizindir. Bu dizin "request,response,status ve errorMessage" dizinlerinden oluşur.**
+
+
 ## Panel Üzerinden Kayıt Ekleme
 
 **Panel üzerinden herhangi bir kayıt ekleyebilmemiz için önce modeli oluşturmamız gereklidir.!**
