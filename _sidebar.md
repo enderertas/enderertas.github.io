@@ -7,6 +7,7 @@
 **   [Controller](controller.md)
 *   [Front-End](frontend.md)
 *   [Common](common.md)
+**   [SeoUrl](seourl.md)
 **   [Common](common.md)
 **   [Shipment](shipment.md)
 **   [ComponenetOptions](componenetoptions.md)
