@@ -1532,6 +1532,8 @@ public function create_order(){
     }
 ````
 
+**Dönderdiğimiz veri türü dizindir. Bu dizin "request,response,status ve errorMessage" dizinlerinden oluşur.**
+
 >SOAP API İstek Örneği
 
 ````php
@@ -1568,9 +1570,6 @@ $soapclient = new \SoapClient($this->api);
 
 $response = $soapclient->gonderiSorgu($request);
 ````
-
-**Dönderdiğimiz veri türü dizindir. Bu dizin "request,response,status ve errorMessage" dizinlerinden oluşur.**
-
 
 ## Panel Üzerinden Kayıt Ekleme
 
