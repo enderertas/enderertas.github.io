@@ -1573,7 +1573,7 @@ $response = $soapclient->gonderiSorgu($request);
 
 ## Panel Üzerinden Kayıt Ekleme
 
-**Panel üzerinden herhangi bir kayıt ekleyebilmemiz için önce modeli oluşturmamız gereklidir.!**
+**Panel üzerinden herhangi bir kayıt ekleyebilmemiz için önce modeli oluşturmamız gereklidir!**
 
 Panel üzerinden Kargo -> Kargo Tercihleri sayfasına gidiniz. 
 Eklemek istediğiniz modeli "Ekle" tuşuna basarak açılan listeden seçiniz.
