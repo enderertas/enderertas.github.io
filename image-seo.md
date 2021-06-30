@@ -1,6 +1,6 @@
-#ImageSeo Kullanımı
+# ImageSeo Kullanımı
 
-```namespace common\models\ImageSeo; ```
+> namespace common\models\ImageSeo; 
 
 > Image'ların alt değerini otomatik ayarlamak için kullanılır bu yapıyla beraber frontend tarafında ekstradan alt değeri belirlemeye gerekmez ya da panel üzerinden alt değer inputu oluşturmanıza gerek kalmayabilir.
 
