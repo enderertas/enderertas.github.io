@@ -6,6 +6,7 @@
 **   [Lokalizasyon](localization.md)
 **   [Controller](controller.md)
 *   [Front-End](frontend.md)
+**   [Js ve Css Kullanımı](js-and-css.md)
 *   [Common](common.md)
 **   [SeoUrl](seourl.md)
 **   [Shipment](shipment.md)
