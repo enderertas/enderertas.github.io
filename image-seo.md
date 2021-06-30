@@ -5,7 +5,7 @@
 > Image'ların alt değerini otomatik ayarlamak için kullanılır bu yapıyla beraber frontend tarafında ekstradan alt değeri belirlemeye gerekmez ya da panel üzerinden alt değer inputu oluşturmanıza gerek kalmayabilir.
 
 
-Örnek Kullanım
+## Örnek Kullanım
 
 * Klasör içine kullanılacak olan modelin adında php class açılır örneğin CarouselBasic.php
 
