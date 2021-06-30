@@ -12,6 +12,7 @@
 **   [ComponenetOptions](componenetoptions.md)
 **   [GeneralOptions](general-options.md)
 **   [Flexible](flexible.md)
+**   [Liste Kullanımı (Model List Items)](model-list-items.md)
 **   [Pazarlama Araçları](seo-tools.md)
 **   [Widget](widget.md)
 *   [Gii](gii.md)
