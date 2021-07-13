@@ -17,7 +17,7 @@ Yii::t('er', '$ceviri_ifadesi');
 <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id':zone, //bu şekilde kullanılır
+            'id:zone', //bu şekilde kullanılır
                     ],
                 ]); ?>
 ```

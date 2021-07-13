@@ -2,6 +2,35 @@
 
 > Fonksiyonların kullanılacağı asıl alan burasıdır.
 
+>Yeni bir controller yaratıldığında aşağıdaki konuma bunu eklemeyi unutma
+
+```php
+use backend\modules\rbac\filters\AccessControl;
+
+```
+
+```php
+ 'access' => [
+                'class' => AccessControl::className(),
+            ],
+```
+
+```php
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+```
 
 ## Parametre
 Controller'da basit bir şekilde parametre işleme şu şekildedir:
@@ -64,3 +93,25 @@ Controller'da üstteki örneğe göre daha kompleks parametre işleme şu şekil
 ```
 
 >Bu işlemlerden sonra filtrelemede sıkıntı yaşıyorsanız kod hiyerarşisini kontrol ediniz.
+
+## Panel Üzerinden Controller ve Sayfa Oluşturma
+
+* Panel üzerinden "Kontrolör Haritası"na gidiniz.
+* Yeni controller oluşturunuz.
+* Panel üzerinden sayfalar-> sayfa oluştura gidiniz.
+* Sayfa tipinde oluşturduğunuz controller'i seçiniz
+
+>Sistem otomatik işlemezse 
+
+```
+vagrant ssh
+```
+Projeninizin dosya yoluna gidin
+
+```
+php yii seo-url/one controller-adı
+```
+
+```
+php yii queue/run
+```
