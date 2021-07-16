@@ -32,6 +32,6 @@ CSS::begin();
 /*Bu alana CSS kodlarınızı yazabilirsiniz */
     </style>
 <?php
-CSS::end();
+CSS::end();;
 ?>
 ```
