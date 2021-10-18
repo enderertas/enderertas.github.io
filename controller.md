@@ -2,7 +2,7 @@
 
 > Fonksiyonların kullanılacağı asıl alan burasıdır.
 
->Yeni bir controller yaratıldığında aşağıdaki konuma bunu eklemeyi unutma
+> Yeni bir controller yaratıldığında aşağıdaki konuma bunu eklemeyi unutma
 
 ```php
 use backend\modules\rbac\filters\AccessControl;
@@ -32,10 +32,42 @@ use backend\modules\rbac\filters\AccessControl;
     }
 ```
 
+## Parametre Aktarımı
+
+Comer içinde bazı durumlarda başka controller içindeki parametre verilerini başka alanlara aktarmak gerekebilir. Biz
+bunu Pazarlama araçları entegreasyonlarında yoğun bir şekilde kullanıyoruz. Örneğin bir controllerdaki function 'un
+içindeki array' e ulaşmak için yapacağımız işlem şu şekildedir.
+
+`FaqController.php`
+
+```php 
+$items=['comer','e-ticaret','e-ihracat'];
+    
+   Yii::$app->params[self::PARAM_KEY] = $items; 
+```
+
+Burada sadece dikkat etmeniz gereken şey kullanılacak parametre hiyerarşiye uygun olarak functiondan sonra gelmelidir.
+Bu şekilde
+
+```php 
+  const PARAM_KEY = 'faqs'; 
+  ```
+
+Controller' da sabit olarak tanımımızı yapıyoruz.
+> Burada dikkat etmemiz gereken en önemli şey sabit değerinin başka hiç bir yerde kullanılmamış olmasına dikkat ediniz.
+
+Bunlardan sonra çağırma aşaması kaldı.
+
+```php
+$items = Yii::$app->params[FaqController::PARAM_KEY];
+```
+
+Yukarıdaki kodumuzu yazdırdığımız her yerde $items arrayimiz dönecektir.
+> Tekrar hatırlatma: Bu çağırma işlemi function çağırıldıktan sonra gerçekleştirilmelidir.
+
 ## Parametre
+
 Controller'da basit bir şekilde parametre işleme şu şekildedir:
-
-
 
 ```php
     public function actionIndex($pending = false) //parametre belirtiniz
@@ -92,7 +124,7 @@ Controller'da üstteki örneğe göre daha kompleks parametre işleme şu şekil
 
 ```
 
->Bu işlemlerden sonra filtrelemede sıkıntı yaşıyorsanız kod hiyerarşisini kontrol ediniz.
+> Bu işlemlerden sonra filtrelemede sıkıntı yaşıyorsanız kod hiyerarşisini kontrol ediniz.
 
 ## Panel Üzerinden Controller ve Sayfa Oluşturma
 
@@ -101,11 +133,12 @@ Controller'da üstteki örneğe göre daha kompleks parametre işleme şu şekil
 * Panel üzerinden sayfalar-> sayfa oluştura gidiniz.
 * Sayfa tipinde oluşturduğunuz controller'i seçiniz
 
->Sistem otomatik işlemezse 
+> Sistem otomatik işlemezse
 
 ```
 vagrant ssh
 ```
+
 Projeninizin dosya yoluna gidin
 
 ```

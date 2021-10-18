@@ -12,7 +12,7 @@ use common\components\widgets\JS;
 JS::begin();
 ?>
     <script>
-    // bu alana scriptlerinizi yazabilirsiniz
+/*Bu alana Scriptlerinizi yazabilirsiniz */
     </script>
 <?php
 JS::end();
@@ -32,6 +32,6 @@ CSS::begin();
 /*Bu alana CSS kodlarınızı yazabilirsiniz */
     </style>
 <?php
-CSS::end();;
+CSS::end();
 ?>
 ```

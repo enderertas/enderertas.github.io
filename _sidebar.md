@@ -7,6 +7,7 @@
 **   [Controller](controller.md)
 *   [Front-End](frontend.md)
 **   [Js ve Css Kullanımı](js-and-css.md)
+**   [OWL Carousel Kullanımı](owl-carousel.md)
 *   [Common](common.md)
 **   [SeoUrl](seourl.md)
 **   [Shipment](shipment.md)
@@ -24,6 +25,8 @@
 **   [GitHub](github.md)
 **   [Migrate](migrate.md)
 **   [Cache](cache.md)
+**   [Hatalar](errors.md)
+**   [SQL Request](sql.md)
 
 
 
